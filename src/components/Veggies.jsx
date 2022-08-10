@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
+import { Link } from "react-router-dom";
 
 const Veggies = () => {
   const [veggies, setVeggies] = useState([]);
@@ -24,7 +25,7 @@ const Veggies = () => {
     <Wrapper>
             <h3>Our Vegetarian Picks</h3>
             <Splide options={{
-                perPage: 4,
+                perPage: 3,
                 arrows: false,
                 pagination: false,
                 drag: 'free',
@@ -33,9 +34,11 @@ const Veggies = () => {
             {veggies.map((recipe) => (
                 <SplideSlide key={recipe.id}>
                 <Card>
+                <Link to={'/recipe/'+recipe.id}>
                     <p>{recipe.title}</p>
                     <img src={recipe.image} alt={recipe.title} />
                     <Gradient />
+                </Link>
                 </Card>
                 </SplideSlide>
             ))}

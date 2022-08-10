@@ -16,8 +16,37 @@ const Cuisine = () => {
     setCuisine(recipe.results);
   }
   return (
-    <div>Cuisine</div>
+    <Grid>
+      {
+        cuisine.map((cuisine) => (
+         <Card key={cuisine.id}>
+          <img src={cuisine.image} alt={cuisine.title} />
+          <h4>{cuisine.title}</h4>
+         </Card>
+        ))
+      }
+    </Grid>
   )
 }
 
 export default Cuisine
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 3rem;
+`
+
+const Card = styled.div`
+  img {
+    width: 100%;
+    border-radius: 2rem;
+  }
+  a {
+    text-decoration: none;
+  }
+  h4 {
+    text-align: center;
+    padding: 1rem;
+  }
+`
